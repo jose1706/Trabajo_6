@@ -1,0 +1,41 @@
+import pandas as pd
+with open("base_datos.txt", "w") as archivo:
+    while True:
+      pregunta1 = input("Qué desea hacer en el archivo? \n 1 ingresar usuario \n 2 consultar \n 3 eliminar \n 4 salir \n "
+                            "escriba aquí lo que desea hacer: ")
+      if pregunta1 == "1":#Ingresar usuario
+              while True:
+                  open("base_datos.txt")
+                  print("Ingrese los siguientes datos del usuario:")
+                  doc = str(input("Ingrese el documento de identidad: "))
+                  nombre = str(input("Ingrese su nombre: "))
+                  apellido = str(input("Ingrese su apellido: "))
+                  archivo.write(doc + " ")
+                  archivo.write(nombre + " ")
+                  archivo.write(apellido + "\n")
+                  pregunta2 = input("\n ¿Desea agreagar mas usuarios? \n Ingrese si o no: ")
+                  if pregunta2 == "no":
+                      break
+              archivo.close()
+      elif pregunta1 == "2":
+        a = open("base_datos.txt", "r")
+        documento = str(input("¿que documento desea consultar en la base de datos? : "))
+        for linea in a:
+          if documento in linea:
+            print(linea) 
+        a.close()
+
+      elif pregunta1 == "3":
+        documento = str(input("la linea a eliminar: "))
+        a = open("base_datos.txt", "r+")
+        lineas = a.readlines()
+        a.seek(0)
+        for linea in lineas:
+          if documento not in linea:
+            a.write(linea)
+        a.close()
+        
+
+      elif pregunta1 == "4":
+        
+        break
